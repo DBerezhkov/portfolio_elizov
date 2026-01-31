@@ -394,7 +394,7 @@
                             </div>
                         </div>
                     @else
-                        <a href="{{ route('login') }}" class="auth-btn">Авторизоваться</a>
+                        <a href="{{ $canRegister ? route('register') : route('login') }}" class="auth-btn">{{ $canRegister ? 'Регистрация' : 'Авторизоваться' }}</a>
                     @endauth
                 </div>
                 <p class="subtitle">Информационные системы и программирование</p>

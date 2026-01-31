@@ -14,7 +14,8 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::latest()->get();
-        return view('portfolio', compact('posts'));
+        $canRegister = \App\Models\User::count() === 0;
+        return view('portfolio', compact('posts', 'canRegister'));
     }
 
     /**
