@@ -32,6 +32,67 @@
             margin-bottom: 40px;
         }
 
+        .header-row {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-row .user-menu {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .user-name {
+            display: inline-block;
+            background-color: #4a4a4a;
+            color: #ffffff;
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border: none;
+        }
+
+        .user-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 5px;
+            background: #fff;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            overflow: hidden;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s, visibility 0.2s;
+            z-index: 100;
+        }
+
+        .user-menu:hover .user-dropdown {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .logout-btn {
+            display: block;
+            width: 100%;
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            color: #2c2c2c;
+            font-size: 0.95rem;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .logout-btn:hover {
+            background-color: #f0f0f0;
+        }
+
         h1 {
             font-size: 2rem;
             font-weight: 300;
@@ -162,7 +223,18 @@
 <body>
     <header>
         <div class="container">
-            <h1>Добавить новую работу</h1>
+            <div class="header-row">
+                <h1>Добавить новую работу</h1>
+                <div class="user-menu">
+                    <span class="user-name">{{ Auth::user()->name }}</span>
+                    <div class="user-dropdown">
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="logout-btn">Выйти</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
             <a href="{{ route('portfolio') }}" class="back-link">← Вернуться к портфолио</a>
         </div>
     </header>
