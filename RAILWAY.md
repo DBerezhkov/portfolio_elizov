@@ -1,24 +1,26 @@
-# Деплой на Railway
+# Railway — деплой
 
-## Обязательно: добавьте PostgreSQL
+## 1. Добавьте PostgreSQL
 
-Railway **не поддерживает SQLite** (файловая БД не сохраняется между деплоями). Нужна PostgreSQL.
+В проекте Railway: **New** → **Database** → **PostgreSQL**
 
-### Шаги
+## 2. Переменные окружения
 
-1. **Добавьте PostgreSQL** в проект Railway:
-   - New → Database → PostgreSQL
+В сервисе приложения → **Variables** добавьте:
 
-2. **Подключите БД к сервису приложения**:
-   - Откройте сервис приложения → Variables
-   - Добавьте переменную: `DATABASE_URL` = `${{Postgres.DATABASE_URL}}`
-   - (Имя сервиса БД может отличаться: MySQL, PostgreSQL и т.п.)
+| Переменная | Значение |
+|------------|----------|
+| `DATABASE_URL` | `${{Postgres.DATABASE_URL}}` |
+| `APP_KEY` | `base64:...` (сгенерируйте: `php artisan key:generate`) |
+| `APP_ENV` | `production` |
+| `APP_DEBUG` | `false` |
+| `APP_URL` | Ваш домен Railway (например `https://xxx.up.railway.app`) |
 
-3. **Перезадеплойте** проект
+## 3. Деплой
 
-### Данные для входа после деплоя
+Сделайте push в репозиторий — Railway соберёт образ по Dockerfile и задеплоит.
+
+## Вход
 
 - **Email:** `elizov@portfolio.local`
 - **Пароль:** `portfolio123`
-
-Миграции и создание администратора выполняются автоматически при каждом деплое.

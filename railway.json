@@ -1,7 +1,6 @@
 {
   "$schema": "https://railway.com/railway.schema.json",
-  "deploy": {
-    "preDeployCommand": "php artisan migrate --force && php artisan portfolio:create-admin",
-    "startCommand": "php artisan serve --host=0.0.0.0 --port=${PORT:-8000}"
+  "build": {
+    "builder": "DOCKERFILE"
   }
 }
