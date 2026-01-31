@@ -2,27 +2,16 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
     /**
      * Seed the application's database.
+     * Администратор создаётся командой: php artisan portfolio:create-admin
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::updateOrCreate(
-            ['email' => 'elizov@portfolio.local'],
-            [
-                'name' => 'Елизов Алексей',
-                'password' => bcrypt('portfolio123'),
-            ]
-        );
+        // Администратор создаётся через portfolio:create-admin при деплое
     }
 }

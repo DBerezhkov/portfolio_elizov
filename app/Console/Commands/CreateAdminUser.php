@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\User;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 
 class CreateAdminUser extends Command
 {
@@ -13,7 +14,14 @@ class CreateAdminUser extends Command
 
     public function handle(): int
     {
-        $user = User::updateOrCreate(
+        try {
+            DB::connection()->getPdo();
+        } catch (\Throwable $e) {
+            $this->error('База данных недоступна. На Railway добавьте PostgreSQL и укажите DATABASE_URL.');
+            return self::FAILURE;
+        }
+
+        User::updateOrCreate(
             ['email' => 'elizov@portfolio.local'],
             [
                 'name' => 'Елизов Алексей',
