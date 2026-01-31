@@ -10,7 +10,7 @@ RUN npm ci && npm run build
 FROM php:8.2-cli
 
 RUN apt-get update && apt-get install -y \
-    git unzip libzip-dev libpng-dev libonig-dev \
+    git unzip libzip-dev libpng-dev libonig-dev libpq-dev \
     && docker-php-ext-install zip pdo_mysql pdo_pgsql mbstring exif pcntl bcmath gd \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
