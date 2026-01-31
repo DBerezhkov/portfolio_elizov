@@ -375,6 +375,23 @@
             position: relative;
             flex-shrink: 0;
         }
+
+        @media (max-width: 768px) {
+            .header-row {
+                flex-direction: column;
+            }
+            .header-row .auth-btn,
+            .header-row .user-menu {
+                position: static;
+                transform: none;
+                order: -1;
+            }
+            .user-dropdown {
+                left: 50%;
+                right: auto;
+                transform: translateX(-50%);
+            }
+        }
     </style>
 </head>
 <body>
