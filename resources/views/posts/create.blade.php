@@ -162,8 +162,21 @@
 <body>
     <header>
         <div class="container">
-            <h1>Добавить новую работу</h1>
-            <a href="{{ route('portfolio') }}" class="back-link">← Вернуться к портфолио</a>
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                <div>
+                    <h1>Добавить новую работу</h1>
+                    <a href="{{ route('portfolio') }}" class="back-link">← Вернуться к портфолио</a>
+                </div>
+                <div>
+                    @auth
+                        <span style="color: #4a4a4a; margin-right: 15px;">{{ Auth::user()->name }}</span>
+                        <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                            @csrf
+                            <button type="submit" style="background: #e0e0e0; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 0.9rem;">Выйти</button>
+                        </form>
+                    @endauth
+                </div>
+            </div>
         </div>
     </header>
 
