@@ -13,9 +13,6 @@ class AuthController extends Controller
         if (Auth::check()) {
             return redirect()->route('portfolio');
         }
-        if (User::count() === 0) {
-            return redirect()->route('register');
-        }
         return view('auth.login');
     }
 
