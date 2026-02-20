@@ -416,6 +416,7 @@
                 </div>
                 <p class="subtitle">Информационные системы и программирование</p>
                 <p class="subtitle">Коллекция проектов и работ</p>
+                <p class="subtitle">Для связи: +7 (999) 999-99-99 и elizov.aleksey@gmail.com</p>
                 @auth
                     <a href="{{ route('posts.create') }}" class="add-post-btn">+ Добавить работу</a>
                 @endauth
